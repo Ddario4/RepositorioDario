@@ -25,7 +25,8 @@
 				
 				<% Object id= session.getAttribute("id");
 					if(id==null){%>
-				<%} else if(id.equals("peliculas")){ %> 	<%@include file="WEB-INF/peliculas.jsp" %>
+				<%} else if(id.equals("pelicula")){ %> 	<%@include file="WEB-INF/pelicula.jsp" %>
+				<%} else if(id.equals("peliculas")){ %> <%@include file="WEB-INF/peliculas.jsp" %>
 				
 				<%} %>
 				

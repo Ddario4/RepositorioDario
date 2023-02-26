@@ -63,4 +63,28 @@ public class Db {
 		
 		return null;
 	}
+	
+	public String[] getRegistro() {
+		if ( cn == null ) return null;
+		
+		try {
+			ResultSet rs = ps.executeQuery();
+			if ( rs.next() ) {
+				
+				int columnas = rs.getMetaData().getColumnCount();
+				String[] aRegistro = new String[columnas];
+				
+				
+				for( int columna=0; columna<columnas; columna++ )
+					
+						aRegistro[columna] = rs.getString(columna + 1).trim();
+				
+				return aRegistro;
+			}
+			
+		} catch (SQLException e) { e.printStackTrace();	}
+		
+		return null;
+	}
+	
 }
