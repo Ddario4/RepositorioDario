@@ -87,4 +87,32 @@ public class Db {
 		return null;
 	}
 	
+	
+	
+	
+	
+	
+	public String[][] getCines() {
+		if ( cn == null ) return null;
+			
+			try {
+				ResultSet rs = ps.executeQuery();
+				if ( rs.last() ) {
+					int filas = rs.getRow();
+					int columnas = rs.getMetaData().getColumnCount();
+					String[][] mRegistros = new String[filas][columnas];
+					
+					rs.beforeFirst();
+					for( int fila=0; rs.next(); fila++ )
+						for( int columna=0; columna < columnas; columna++ )
+							mRegistros[fila][columna] = rs.getString(columna + 1).trim();
+					
+					return mRegistros;
+				}
+				
+			} catch (SQLException e) { e.printStackTrace();	}
+			
+			return null;
+		}
+
 }
